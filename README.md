@@ -1,7 +1,7 @@
-#Sudoku Game
+# Sudoku Game
 
 
-##Authors
+## Authors
 
 1. RoboMrFox
 2. Innercord829
