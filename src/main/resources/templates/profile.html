@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <div class="container">
+        <div class="profileInfo">
+            <i id="profileIconTemp" class="fa fa-user"></i>
+            <h1 th:text="${stats.userName}"></h1>
+        </div>
+        <div class="stats">
+            <div class="statInfo">Wins:</div>
+            <div class="statInfo"  th:text="${stats.gameWins}"/>
+            <div class="statInfo">Losses:</div>
+            <div class="statInfo"  th:text="${stats.gameLosses}"/>
+            <div class="statInfo">Games Saved:</div>
+            <div class="statInfo"  th:text="${stats.gamesSaved}"/>
+            <div class="statInfo">Games Restarted:</div>
+            <div class="statInfo"  th:text="${stats.gamesRestarted}"/>
+            <div class="statInfo">Win/Loss Ratio:</div>
+            <div class="statInfo"  th:text="${stats.winLossRatio}"/>
+        </div>
+        <a th:href="@{/}">Home</a>
+    </div>
+</body>
+</html>
