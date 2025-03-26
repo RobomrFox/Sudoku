@@ -2,6 +2,7 @@ import { useState } from "react";
 import DifficultySelector from "./components/DifficultySelector";
 import SudokuBoard from "./components/SudokuBoard";
 import { getSudokuPuzzle } from "./services/sudokuService.js";
+import MusicPlayer from "./components/MusicPlayer";
 import "./App.css";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
   return (
     <div className="app-container">
       <h1>Sudoku Game</h1>
+      <MusicPlayer />
       <div>Testing Initial Render</div>
 
       {/* Error message display */}
