@@ -1,8 +1,2 @@
-com/game/controller/SudokuController.class
-com/game/model/Puzzle.class
-com/game/model/Game.class
-com/game/model/SudokuBoard.class
 com/game/model/User.class
-com/game/model/Stats.class
 com/game/GameApplication.class
-com/game/service/SudokuService.class

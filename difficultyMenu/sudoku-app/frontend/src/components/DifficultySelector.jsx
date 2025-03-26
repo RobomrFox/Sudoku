@@ -5,50 +5,46 @@ import "./DifficultySelector.css";
 // Props:
 // - onSelectDifficulty: callback function to handle difficulty selection
 const DifficultySelector = ({ onSelectDifficulty }) => {
-  // State to track currently selected difficulty
-  const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+  const [selected, setSelected] = useState(null);
 
-  // Handler for difficulty selection
-  // Updates local state and calls parent callback
   const handleSelect = (difficulty) => {
-    setSelectedDifficulty(difficulty);
+    setSelected(difficulty);
     onSelectDifficulty(difficulty);
   };
 
   return (
     <div className="difficulty-container">
-      <h2>Select Difficulty</h2>
+      <h1>Select Difficulty Level</h1>
+
       <div className="panels-container">
-        {/* Easy difficulty panel */}
         <div
-          className={`panel ${selectedDifficulty === "easy" ? "selected" : ""}`}
+          className={`panel ${selected === "easy" ? "selected" : ""}`}
           onClick={() => handleSelect("easy")}
         >
           <h3>Easy</h3>
           <p>Perfect for beginners</p>
-          <span>More hints available</span>
+          <p>Many pre-filled cells</p>
+          <span>~10-15 minutes</span>
         </div>
 
-        {/* Medium difficulty panel */}
         <div
-          className={`panel ${
-            selectedDifficulty === "medium" ? "selected" : ""
-          }`}
+          className={`panel ${selected === "medium" ? "selected" : ""}`}
           onClick={() => handleSelect("medium")}
         >
           <h3>Medium</h3>
-          <p>For experienced players</p>
-          <span>Moderate challenge</span>
+          <p>For casual players</p>
+          <p>Balanced challenge</p>
+          <span>~15-25 minutes</span>
         </div>
 
-        {/* Hard difficulty panel */}
         <div
-          className={`panel ${selectedDifficulty === "hard" ? "selected" : ""}`}
+          className={`panel ${selected === "hard" ? "selected" : ""}`}
           onClick={() => handleSelect("hard")}
         >
           <h3>Hard</h3>
-          <p>For expert players</p>
-          <span>Limited hints</span>
+          <p>For experienced players</p>
+          <p>Challenging patterns</p>
+          <span>~25-40 minutes</span>
         </div>
       </div>
     </div>
