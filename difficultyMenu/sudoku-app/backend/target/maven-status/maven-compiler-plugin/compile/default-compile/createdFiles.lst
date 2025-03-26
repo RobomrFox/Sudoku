@@ -1,2 +1,4 @@
+com/game/controller/GameController.class
+com/game/repository/GameRepository.class
 com/game/model/User.class
 com/game/GameApplication.class
