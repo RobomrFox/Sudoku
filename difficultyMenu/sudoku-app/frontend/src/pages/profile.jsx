@@ -8,8 +8,6 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       const response = await getUserProfile();
-      console.log("Fetched data:", response);
-      // Use 'user' because your backend returns { user: {...}, stats: {...} }
       setProfile(response.user);
       setStats(response.stats);
     };
