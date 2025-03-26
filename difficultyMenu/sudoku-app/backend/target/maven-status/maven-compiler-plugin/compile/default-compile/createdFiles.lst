@@ -1,4 +1,10 @@
+com/game/repository/StatsRepository.class
 com/game/controller/GameController.class
-com/game/repository/GameRepository.class
-com/game/model/User.class
+com/game/dto/UserProfileDto.class
 com/game/GameApplication.class
+com/game/repository/GameRepository.class
+com/game/service/UserService.class
+com/game/controller/UserController.class
+com/game/model/User.class
+com/game/repository/UserRepository.class
+com/game/DataLoader.class

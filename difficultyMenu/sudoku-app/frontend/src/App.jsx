@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GamePage from "./pages/GamePage";
+import ProfilePage from "./pages/profile";
 import "./App.css";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
           <Routes>
             <Route path="/" element={<GamePage />} />
             <Route path="*" element={<GamePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </main>
       </div>
