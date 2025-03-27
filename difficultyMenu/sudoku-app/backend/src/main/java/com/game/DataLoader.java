@@ -2,7 +2,6 @@ package com.game;
 
 import com.game.model.User;
 import com.game.model.Stats;
-import com.game.repository.UserRepository;
 import com.game.repository.StatsRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
