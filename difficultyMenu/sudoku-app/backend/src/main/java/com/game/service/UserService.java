@@ -4,6 +4,7 @@ import com.game.dto.UserProfileDto;
 import com.game.model.User;
 import com.game.model.Stats;
 import com.game.repository.StatsRepository;
+import com.game.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

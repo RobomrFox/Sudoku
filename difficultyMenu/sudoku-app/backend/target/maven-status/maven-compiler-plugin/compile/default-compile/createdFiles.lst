@@ -1,10 +1,17 @@
 com/game/repository/StatsRepository.class
 com/game/controller/GameController.class
+com/game/controller/SudokuController.class
+com/game/model/Puzzle.class
+com/game/model/Game.class
 com/game/dto/UserProfileDto.class
+com/game/controller/AuthController.class
 com/game/GameApplication.class
+com/game/service/SudokuService.class
 com/game/repository/GameRepository.class
 com/game/service/UserService.class
 com/game/controller/UserController.class
+com/game/model/SudokuBoard.class
 com/game/model/User.class
 com/game/repository/UserRepository.class
+com/game/model/Stats.class
 com/game/DataLoader.class
