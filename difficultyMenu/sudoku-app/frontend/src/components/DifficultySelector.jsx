@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./DifficultySelector.css";
+import "./MusicPlayer.jsx";
+import MusicPlayer from "./MusicPlayer.jsx";
 
 // Component for selecting game difficulty
 // Props:
@@ -15,6 +17,7 @@ const DifficultySelector = ({ onSelectDifficulty }) => {
   return (
     <div className="difficulty-container">
       <h1>Select Difficulty Level</h1>
+      <MusicPlayer/>
 
       <div className="panels-container">
         <div
