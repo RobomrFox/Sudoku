@@ -15,8 +15,7 @@ import java.util.Date;
 public class UserService {
     private final UserRepository userRepository;
     private final StatsRepository statsRepository;
-    private final BCryptPasswordEncoder passwordEncoder =
-            new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
     public UserService(UserRepository userRepository,
@@ -25,13 +24,19 @@ public class UserService {
         this.statsRepository = statsRepository;
     }
 
-    // Authentication methods
-    public String registerUser(String userName, String password) {
+    // Updated registration method to include email in the parameters
+    public String registerUser(String userName, String email, String password) {
+        // Check if the username already exists
         if (userRepository.findByUserName(userName) != null) {
             return "Username already exists";
         }
+        // Check if the email is already registered
+        if (userRepository.findByEmail(email) != null) {
+            return "Email already exists";
+        }
         String encodedPassword = passwordEncoder.encode(password);
-        User user = new User(null, userName, encodedPassword, new Date());
+        // Create a new User with an email field included
+        User user = new User(null, userName, email, encodedPassword, new Date());
         userRepository.save(user);
         return "User registered successfully";
     }
@@ -41,7 +46,6 @@ public class UserService {
         return user != null && passwordEncoder.matches(password, user.getPassword());
     }
 
-    // User profile method
     public UserProfileDto getUserProfile(String userId) {
         User user = userRepository.findById(userId).orElse(null);
         Stats stats = statsRepository.findById(userId).orElse(null);

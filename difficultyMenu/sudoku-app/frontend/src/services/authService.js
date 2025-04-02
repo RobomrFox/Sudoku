@@ -4,7 +4,7 @@ import axios from "axios";
 export const loginUser = async (userName, password) => {
   try {
     const response = await axios.post(
-      "http://localhost:8080/auth/login",
+      "http://localhost:8080/login",
       { userName, password },
       {
         headers: {
@@ -19,11 +19,11 @@ export const loginUser = async (userName, password) => {
   }
 };
 
-export const registerUser = async (userName, password) => {
+export const registerUser = async (userName, email, password) => {
   try {
     const response = await axios.post(
-      "http://localhost:8080/auth/register",
-      { userName, password },
+      "http://localhost:8080/register",
+      { userName, email, password },
       {
         headers: {
           "Content-Type": "application/json",

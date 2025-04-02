@@ -9,15 +9,17 @@ public class User {
     @Id
     private String userId;
     private String userName;
-    private String password; // Add this field
+    private String email;      // New field for email
+    private String password;
     private Date dateJoined;
 
     public User() {}
 
-    // Updated constructor to accept password
-    public User(String userId, String userName, String password, Date dateJoined) {
+    // Updated constructor to include email
+    public User(String userId, String userName, String email, String password, Date dateJoined) {
         this.userId = userId;
         this.userName = userName;
+        this.email = email;
         this.password = password;
         this.dateJoined = dateJoined;
     }
@@ -35,10 +37,16 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    public String getPassword() {  // New getter
+    public String getEmail() {  // New getter
+        return email;
+    }
+    public void setEmail(String email) {  // New setter
+        this.email = email;
+    }
+    public String getPassword() {
         return password;
     }
-    public void setPassword(String password) {  // New setter
+    public void setPassword(String password) {
         this.password = password;
     }
     public Date getDateJoined() {

@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
@@ -18,11 +17,15 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserRegisterRequest request) {
         try {
-            String response = userService.registerUser(request.getUserName(),
-                    request.getPassword());
+            // Include email when calling the service.
+            String response = userService.registerUser(
+                    request.getUserName(),
+                    request.getEmail(),
+                    request.getPassword()
+            );
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            // Logging can be added here for debugging
+            // Logging can be added here for debugging.
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body("Registration failed: " + e.getMessage());
