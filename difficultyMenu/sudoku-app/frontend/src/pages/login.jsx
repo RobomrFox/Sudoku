@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/authService";
+import './login.css'
+
 
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
@@ -26,35 +28,45 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <h1>Login</h1>
-      {errorMsg && <div className="error">{errorMsg}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Username:
+      <div className="login-container">
+        <div className="login-logo">
+          <h1>Sudo<span>ku</span></h1>
+        </div>
+
+        {errorMsg && <div className="error">{errorMsg}</div>}
+
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="username">Username:</label>
             <input
+              id="username"
               type="text"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Enter your username"
               required
             />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password:
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="password">Password:</label>
             <input
+              id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               required
             />
-          </label>
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+
+        <div className="signup-link">
+          Don't have an account? <a href="/signup">Sign up</a>
         </div>
-        <button type="submit">Login</button>
-      </form>
+      </div>
     </div>
   );
 };
