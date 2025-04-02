@@ -18,26 +18,37 @@ const RegisterPage = () => {
     return true;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+   e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+   if (!validateForm()) {
+     return;
+   }
 
-    try {
-      const response = await registerUser(userName, email, password);
-      console.log("Registration response:", response);
-      if (typeof response === "string" && response.includes("registered")) {
-        navigate("/login"); // Redirect to login page after successful registration
-      } else {
-        setErrorMsg("Registration failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      setErrorMsg("An error occurred during registration. Please try again.");
-    }
-  };
+   try {
+     const res = await fetch("http://localhost:8080/register", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       credentials: "include",
+       body: JSON.stringify({ userName, email, password }),
+     });
+
+     if (res.ok) {
+       const data = await res.json();
+       console.log("Registration response:", data);
+       navigate("/login");
+     } else {
+       const errorData = await res.json();
+       setErrorMsg(errorData.msg || "Registration failed. Please try again.");
+     }
+   } catch (error) {
+     console.error("Error during registration:", error);
+     setErrorMsg("An error occurred during registration. Please try again.");
+   }
+ };
+
 
 
   return (

@@ -1,0 +1,70 @@
+/* Profile Page Styles - Designed to echo the login page styling */
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+}
+
+.profile-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.profile-title {
+  color: #3a506b;
+  margin: 0 0 20px;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.profile-date {
+  color: #5c6b7e;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.profile-stats h2 {
+  color: #3a506b;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.profile-stats ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.profile-stats li {
+  font-size: 1rem;
+  color: #3a506b;
+  margin-bottom: 10px;
+}
+
+/* Loading message */
+.profile-loading {
+  font-size: 1.5rem;
+  color: #3a506b;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 30px 20px;
+  }
+}

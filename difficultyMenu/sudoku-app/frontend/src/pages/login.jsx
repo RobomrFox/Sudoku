@@ -9,22 +9,22 @@ const LoginPage = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await loginUser(userName, password);
-      // Check the response message or status returned from your backend
-      if (response === "Login successful") {
-        // Redirect to the game page. Ensure this route exists in App.jsx.
-        navigate("/");
-      } else {
-        setErrorMsg("Invalid credentials. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-      setErrorMsg("An error occurred during login. Please try again.");
-    }
-  };
+ const handleSubmit = async (e) => {
+   e.preventDefault();
+   try {
+     const response = await loginUser(userName, password);
+     console.log("Login response:", response);
+     if (response && response.msg === "Login successful") {
+       navigate("/"); // Redirect to the home or game page
+     } else {
+       setErrorMsg("Invalid credentials. Please try again.");
+     }
+   } catch (error) {
+     console.error("Error during login:", error);
+     setErrorMsg("An error occurred during login. Please try again.");
+   }
+ };
+
 
   return (
     <div className="login-page">

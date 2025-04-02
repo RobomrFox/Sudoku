@@ -3,42 +3,55 @@ package com.game.controller;
 import com.game.dto.UserLoginRequest;
 import com.game.dto.UserRegisterRequest;
 import com.game.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173") // adjust or remove if needed
 public class AuthController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody UserRegisterRequest request) {
+    public ResponseEntity<Map<String, String>> registerUser(@RequestBody UserRegisterRequest request) {
         try {
-            // Include email when calling the service.
             String response = userService.registerUser(
                     request.getUserName(),
                     request.getEmail(),
-                    request.getPassword()
-            );
-            return ResponseEntity.ok(response);
+                    request.getPassword());
+            Map<String, String> body = new HashMap<>();
+            body.put("msg", response); // e.g., "User registered successfully"
+            return ResponseEntity.ok(body);
         } catch (Exception e) {
-            // Logging can be added here for debugging.
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body("Registration failed: " + e.getMessage());
+            Map<String, String> body = new HashMap<>();
+            body.put("msg", "Registration failed: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody UserLoginRequest request) {
-        if (userService.loginUser(request.getUserName(), request.getPassword())) {
-            return ResponseEntity.ok("Login successful");
+    public ResponseEntity<Map<String, String>> loginUser(@RequestBody UserLoginRequest request) {
+        try {
+            boolean valid = userService.loginUser(request.getUserName(), request.getPassword());
+            Map<String, String> body = new HashMap<>();
+            if (valid) {
+                body.put("msg", "Login successful");
+                return ResponseEntity.ok(body);
+            } else {
+                body.put("msg", "Invalid credentials");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
+            }
+        } catch (Exception e) {
+            Map<String, String> body = new HashMap<>();
+            body.put("msg", "Login failed: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
         }
-        return ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .body("Invalid credentials");
     }
 }
