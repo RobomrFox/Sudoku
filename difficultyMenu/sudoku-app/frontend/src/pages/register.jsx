@@ -27,7 +27,8 @@ const RegisterPage = () => {
 
     try {
       const response = await registerUser(userName, email, password);
-      if (response === "Registration successful") {
+      console.log("Registration response:", response);
+      if (typeof response === "string" && response.includes("registered")) {
         navigate("/login"); // Redirect to login page after successful registration
       } else {
         setErrorMsg("Registration failed. Please try again.");
@@ -37,6 +38,7 @@ const RegisterPage = () => {
       setErrorMsg("An error occurred during registration. Please try again.");
     }
   };
+
 
   return (
     <div className="register-page">

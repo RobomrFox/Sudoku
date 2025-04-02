@@ -43,8 +43,15 @@ public class UserService {
 
     public boolean loginUser(String userName, String password) {
         User user = userRepository.findByUserName(userName);
-        return user != null && passwordEncoder.matches(password, user.getPassword());
+        if (user == null) {
+            System.out.println("User not found for username: " + userName);
+            return false;
+        }
+        boolean matches = passwordEncoder.matches(password, user.getPassword());
+        System.out.println("Password match: " + matches);
+        return matches;
     }
+
 
     public UserProfileDto getUserProfile(String userId) {
         User user = userRepository.findById(userId).orElse(null);

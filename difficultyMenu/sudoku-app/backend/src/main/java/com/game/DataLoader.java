@@ -29,7 +29,8 @@ public class DataLoader implements CommandLineRunner {
             // Encode the raw password "1234"
             String encodedPassword = passwordEncoder.encode("1234");
             // Create dummy user with username "abc" and password "1234"
-            User user = new User("user1", "abc", encodedPassword, new Date());
+            User user = new User("user1", "abc", "abc@example.com", encodedPassword, new Date());
+
             userRepository.save(user);
 
             // Create dummy stats for that user
