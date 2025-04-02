@@ -1,0 +1,78 @@
+/* Additional styles for sign-up page */
+.password-requirements {
+  font-size: 0.8rem;
+  color: #5c6b7e;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.password-strength {
+  height: 5px;
+  margin-top: 5px;
+  border-radius: 3px;
+  background-color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+.password-strength-meter {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.weak {
+  width: 33.33%;
+  background-color: #f44336;
+}
+
+.medium {
+  width: 66.66%;
+  background-color: #ff9800;
+}
+
+.strong {
+  width: 100%;
+  background-color: #4caf50;
+}
+
+/* Terms and conditions checkbox */
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-top: 3px;
+}
+
+.terms-checkbox label {
+  font-size: 0.85rem;
+  color: #5c6b7e;
+  text-align: left;
+}
+
+.terms-checkbox a {
+  color: #6c63ff;
+  text-decoration: none;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+/* Animation for form submission */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+button[type="submit"].submitting {
+  animation: pulse 1.5s infinite;
+  background-color: #5a52d9;
+}

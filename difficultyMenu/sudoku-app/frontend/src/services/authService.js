@@ -1,13 +1,37 @@
-// Example authService.js
+// services/authService.js
 import axios from "axios";
 
 export const loginUser = async (userName, password) => {
   try {
-    // Replace the URL with your backend endpoint.
-    const response = await axios.post("http://localhost:8080/auth/login", null, {
-      params: { userName, password },
-    });
-    return response.data; // Expecting "Login successful" on success.
+    const response = await axios.post(
+      "http://localhost:8080/auth/login",
+      { userName, password },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true, // if using session cookies
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const registerUser = async (userName, password) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/auth/register",
+      { userName, password },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true, // if needed for session management
+      }
+    );
+    return response.data;
   } catch (error) {
     throw error;
   }

@@ -4,9 +4,11 @@ com/game/controller/SudokuController.class
 com/game/model/Puzzle.class
 com/game/model/Game.class
 com/game/dto/UserProfileDto.class
+com/game/dto/UserRegisterRequest.class
 com/game/controller/AuthController.class
 com/game/GameApplication.class
 com/game/service/SudokuService.class
+com/game/dto/UserLoginRequest.class
 com/game/repository/GameRepository.class
 com/game/service/UserService.class
 com/game/controller/UserController.class

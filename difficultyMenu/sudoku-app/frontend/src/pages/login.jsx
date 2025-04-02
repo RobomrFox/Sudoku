@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../services/authService";
-import './login.css'
-
+import "./login.css";
 
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
@@ -14,9 +13,10 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await loginUser(userName, password);
-      // If login is successful, redirect user to the game page.
+      // Check the response message or status returned from your backend
       if (response === "Login successful") {
-        navigate("/gamepage"); // Redirect to game page instead of profile page.
+        // Redirect to the game page. Ensure this route exists in App.jsx.
+        navigate("/");
       } else {
         setErrorMsg("Invalid credentials. Please try again.");
       }
@@ -30,7 +30,9 @@ const LoginPage = () => {
     <div className="login-page">
       <div className="login-container">
         <div className="login-logo">
-          <h1>Sudo<span>ku</span></h1>
+          <h1>
+            Sudo<span>ku</span>
+          </h1>
         </div>
 
         {errorMsg && <div className="error">{errorMsg}</div>}
@@ -64,7 +66,7 @@ const LoginPage = () => {
         </form>
 
         <div className="signup-link">
-          Don't have an account? <a href="/signup">Sign up</a>
+          Don't have an account? <Link to="/register">Sign up</Link>
         </div>
       </div>
     </div>
