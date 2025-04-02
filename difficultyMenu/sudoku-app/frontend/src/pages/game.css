@@ -1,20 +1,54 @@
-/* Game Page Styles */
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/* Outer game page container - transparent background so that the body's gradient shows */
 .game-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative; /* For profile link positioning */
   max-width: 800px;
   margin: 0 auto;
+  /* Remove any background here so that body's background is visible */
+}
+
+.profile-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #6c63ff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Game Container: White background, centered, max-height, and specific overflow handling */
+.game-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Add this line to center children horizontally */
+  gap: 1.5rem;
+  width: 100%;
+  max-height: 900px; /* Keep the max height */
+  overflow-y: auto;  /* Allow vertical scrolling if needed */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   padding: 2rem;
-  background-color: #f8f9fa;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Game Container */
-.game-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
+/* Game Header remains */
 .game-header {
   display: flex;
   justify-content: space-between;
@@ -22,6 +56,7 @@
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 2px solid #e0e0e0;
+  width: 100%; /* Ensure header takes full width */
 }
 
 .game-header h2 {
@@ -30,6 +65,7 @@
   margin: 0;
 }
 
+/* New Game Button */
 .new-game-btn {
   background-color: #3f51b5;
   color: white;
@@ -105,7 +141,7 @@
   text-align: center;
   max-width: 400px;
   animation: pop-in 0.3s ease-out;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .win-modal h2 {

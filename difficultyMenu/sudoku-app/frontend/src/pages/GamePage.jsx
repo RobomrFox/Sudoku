@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import DifficultySelector from "../components/DifficultySelector";
 import SudokuBoard from "../components/SudokuBoard";
 import { createNewGame } from "../services/gameService";
-import { v4 as uuidv4 } from "uuid";
 import "./game.css";
 
 const GamePage = () => {
@@ -16,6 +16,8 @@ const GamePage = () => {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
 
+  const navigate = useNavigate();
+
   // Handle difficulty selection and start a new game
   const handleDifficultySelect = async (selectedDifficulty) => {
     setDifficulty(selectedDifficulty);
@@ -25,14 +27,12 @@ const GamePage = () => {
     setStartTime(Date.now());
 
     try {
-      // Use our new createNewGame function that handles everything
       const newGameData = await createNewGame(selectedDifficulty);
 
       setGameData({
         gameId: newGameData.gameId,
         initialBoard: JSON.parse(newGameData.currentGrid || "[]"),
         difficulty: selectedDifficulty,
-        // Make sure the solution is properly parsed if it's a string
         solution:
           typeof newGameData.solution === "string"
             ? JSON.parse(newGameData.solution)
@@ -80,11 +80,19 @@ const GamePage = () => {
 
   return (
     <div className="game-page">
+      <div className="profile-link" onClick={() => navigate("/profile")}>
+        Profile
+      </div>
+
       {!gameStarted ? (
-        // Show difficulty selector when game not started
-        <DifficultySelector onSelectDifficulty={handleDifficultySelect} />
+        // Wrap DifficultySelector into a white card styled container
+        <div className="game-container">
+          <div className="difficulty-selector-wrapper"> {/* Add this wrapper */}
+            <DifficultySelector onSelectDifficulty={handleDifficultySelect} />
+          </div>
+        </div>
+
       ) : (
-        // Show game board when game is started
         <div className="game-container">
           <div className="game-header">
             <h2>Sudoku - {difficulty}</h2>
@@ -95,7 +103,6 @@ const GamePage = () => {
               New Game
             </button>
           </div>
-
           <SudokuBoard
             initialBoard={gameData.initialBoard}
             gameId={gameData.gameId}
@@ -109,7 +116,6 @@ const GamePage = () => {
       {loading && <div className="loading">Loading game...</div>}
       {error && <div className="error">{error}</div>}
 
-      {/* Win Modal */}
       {showWinModal && (
         <div className="modal-overlay">
           <div className="win-modal">

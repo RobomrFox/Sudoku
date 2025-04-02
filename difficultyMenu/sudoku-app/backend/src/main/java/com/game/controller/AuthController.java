@@ -22,8 +22,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerUser(@RequestBody UserRegisterRequest request) {
         try {
-            String response = userService.registerUser(
-                    request.getUserName(),
+            String response = userService.registerUser(request.getUserName(),
                     request.getEmail(),
                     request.getPassword());
             Map<String, String> body = new HashMap<>();
@@ -35,6 +34,7 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
         }
     }
+
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> loginUser(@RequestBody UserLoginRequest request) {

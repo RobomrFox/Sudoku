@@ -26,28 +26,21 @@ const RegisterPage = () => {
    }
 
    try {
-     const res = await fetch("http://localhost:8080/register", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       credentials: "include",
-       body: JSON.stringify({ userName, email, password }),
-     });
-
-     if (res.ok) {
-       const data = await res.json();
-       console.log("Registration response:", data);
-       navigate("/login");
+     const response = await registerUser(userName, email, password);
+     console.log("Registration response:", response);
+     // Check the msg property from the response.
+     if (response && response.msg === "User registered successfully") {
+       navigate("/login"); // Registration succeeded; redirect to login.
      } else {
-       const errorData = await res.json();
-       setErrorMsg(errorData.msg || "Registration failed. Please try again.");
+       // If there is an error message from the backend, display it.
+       setErrorMsg(response && response.msg ? response.msg : "Registration failed. Please try again.");
      }
    } catch (error) {
      console.error("Error during registration:", error);
      setErrorMsg("An error occurred during registration. Please try again.");
    }
  };
+
 
 
 

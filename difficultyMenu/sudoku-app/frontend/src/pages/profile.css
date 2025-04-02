@@ -54,17 +54,36 @@
   margin-bottom: 10px;
 }
 
+/* Container for the action buttons */
+.profile-buttons {
+  display: flex; /* Use flexbox to place buttons side-by-side */
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 15px; /* Add a 15px gap between the buttons */
+  margin-top: 30px; /* Add some space above the buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens if needed */
+}
+
+/* Styling for the action buttons (Go to Game, Back to Login) */
+.profile-action-btn {
+  background-color: #6c63ff; /* Same background as profile link on game page */
+  color: white;
+  padding: 10px 18px; /* Adjust padding for size */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem; /* Make text bigger */
+  transition: background-color 0.2s ease; /* Smooth transition */
+  text-decoration: none; /* Remove underline if it behaves like a link */
+  display: inline-block; /* Ensure proper spacing and layout */
+}
+
+.profile-action-btn:hover {
+  background-color: #5a52d9; /* Darker shade on hover */
+}
+
+
 /* Loading message */
 .profile-loading {
   font-size: 1.5rem;
-  color: #3a506b;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .profile-container {
-    padding: 30px 20px;
-  }
-}
+  color:
